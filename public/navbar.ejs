@@ -1,0 +1,14 @@
+<header class="navbar">
+  <div class="container">
+    <a href="/" class="logo">MySite</a>
+    <nav>
+      <a href="/">Home</a>
+      <%  if(auth){ %>
+      <a href="/logout">Log out</a>
+      <% } %> <% if(!auth){ %>
+      <a href="/login">Log in</a>
+      <a href="/signup">Sign Up</a>
+      <% } %>
+    </nav>
+  </div>
+</header>

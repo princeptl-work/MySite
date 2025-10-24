@@ -1,0 +1,60 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+
+<div class="signup-container" style="margin: 70px 0px">
+  <div class="signup-card">
+    <h2>Create Your Account</h2>
+    <p>Welcome to Airbnb Clone! Sign up to start exploring amazing stays.</p>
+
+    <form
+      novalidate
+      action="/signup"
+      method="POST"
+      class="signup-form needs-validation"
+    >
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          class="form-control"
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Enter your username"
+          required
+        />
+        <div class="invalid-feedback">Please enter username.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          class="form-control"
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Enter your email"
+          required
+        />
+        <div class="invalid-feedback">Please enter email.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          class="form-control"
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Enter your password"
+          required
+        />
+        <div class="invalid-feedback">Please enter password.</div>
+      </div>
+
+      <button type="submit" class="signup-btn">Sign Up</button>
+
+      <p class="login-link">
+        Already have an account? <a href="/login">Log in here</a>
+      </p>
+    </form>
+  </div>
+</div>

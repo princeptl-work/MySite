@@ -1,0 +1,40 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+<div class="top-bar">
+  <a href="/listing/add" class="add-btn">+ Add New Listing</a>
+</div>
+
+<div class="property-container">
+  <% for(let listing of listings){ %>
+  <div class="property-card">
+    <div class="property-image">
+      <img src="<%= listing.image.url %>" alt="<%= listing.title %>" />
+    </div>
+    <div class="property-content">
+      <div class="property-title"><%= listing.title %></div>
+      <div class="property-description"><%= listing.description %></div>
+      <div class="property-details">
+        <span class="property-location"
+          ><%= listing.location %>, <%= listing.country %></span
+        >
+        <span class="property-price">$<%= listing.price %></span>
+      </div>
+    </div>
+    <div class="property-footer">
+      <a href="/listing/<%= listing._id %>" class="view-btn">View</a>
+      <% if(user && user._id.equals(listing.owner._id)){ %>
+      <a href="/listing/<%= listing._id %>/edit" class="edit-btn">Edit</a>
+      <form
+        class="delete-form"
+        action="/listing/<%= listing._id %>?_method=DELETE"
+        method="POST"
+      >
+        <input type="submit" value="Delete" />
+      </form>
+      <% } %>
+      <a href="/review/listing/<%= listing._id %>" class="add-review-btn"
+        >Add Review</a
+      >
+    </div>
+  </div>
+  <% } %>
+</div>

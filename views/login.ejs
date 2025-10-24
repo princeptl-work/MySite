@@ -1,0 +1,47 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+
+<div class="login-container">
+  <div class="login-card">
+    <h2>Welcome Back!</h2>
+    <p>Log in to continue exploring amazing stays.</p>
+
+    <form
+      action="/login"
+      novalidate
+      method="POST"
+      class="login-form needs-validation"
+    >
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="username"
+          name="username"
+          id="username"
+          placeholder="Enter your username"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Please enter username.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          class="form-control"
+          placeholder="Enter your password"
+          required
+        />
+        <div class="invalid-feedback">Please enter password.</div>
+      </div>
+
+      <button type="submit" class="login-btn">Log In</button>
+
+      <p class="signup-link">
+        Don’t have an account? <a href="/signup">Sign up here</a>
+      </p>
+    </form>
+  </div>
+</div>

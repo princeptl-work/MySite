@@ -1,0 +1,893 @@
+/* --- Global & Base Styles (Airbnb-Inspired) --- */
+:root {
+  --primary-color: #ff5a5f; /* Airbnb's signature red/pink */
+  --secondary-color: #008489; /* Teal/Blue for accents (less used) */
+  --text-color-dark: #222222;
+  --text-color-medium: #717171;
+  --bg-color-light: #f7f7f7;
+  --border-color: #ebebeb;
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: #ffffff; /* Clean white background */
+  color: var(--text-color-dark);
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color-dark);
+  transition: color 0.2s ease;
+}
+
+h1,
+h2,
+.property-title {
+  color: var(--text-color-dark);
+}
+
+.container {
+  max-width: 1280px; /* Wider container for main content */
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* --- Navigation Bar (Header) --- */
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow-light);
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800; /* Extra bold */
+  color: var(--primary-color);
+}
+
+.navbar nav a {
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 20px;
+  padding: 5px 0;
+}
+
+.navbar nav a:hover {
+  color: var(--primary-color);
+}
+
+/* --- Footer --- */
+.site-footer {
+  background-color: var(--bg-color-light);
+  color: var(--text-color-medium);
+  padding: 40px 0;
+  margin-top: 40px;
+  border-top: 1px solid var(--border-color);
+}
+.site-footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.site-footer a {
+  color: var(--text-color-medium);
+  font-weight: 400;
+  margin-left: 15px;
+  font-size: 14px;
+}
+.site-footer a:hover {
+  color: var(--text-color-dark);
+  text-decoration: underline;
+}
+
+/* --- Buttons & Action Links --- */
+.view-btn,
+.edit-btn,
+.add-btn,
+.back-btn,
+.book-btn,
+.submit-btn,
+.save-btn,
+.cancel-btn,
+.delete-form input[type="submit"] {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  border: none;
+}
+
+/* Primary Action Button (Red) */
+.add-btn,
+.book-btn,
+.submit-btn,
+.save-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+.add-btn:hover,
+.book-btn:hover,
+.submit-btn:hover,
+.save-btn:hover {
+  background-color: #e34c52;
+  transform: translateY(-1px);
+}
+
+/* Secondary/Outline Buttons (View, Edit, Delete, Cancel) */
+.back-btn,
+.view-btn,
+.edit-btn,
+.delete-form input[type="submit"] {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.view-btn,
+.edit-btn,
+.delete-form input[type="submit"] {
+  padding: 8px 12px;
+  font-size: 14px;
+  margin: 0 5px;
+}
+
+/* FIX: Ensure card footer buttons are explicitly styled for specificity */
+.property-footer .view-btn,
+.property-footer .edit-btn,
+.delete-form input[type="submit"] {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.back-btn:hover,
+.view-btn:hover,
+.edit-btn:hover,
+.delete-form input[type="submit"]:hover {
+  background-color: var(--bg-color-light);
+}
+
+/* Specific styling for the Cancel button in forms */
+.btn-container .cancel-btn {
+  background-color: transparent;
+  color: var(--text-color-dark);
+  border: 1px solid var(--border-color);
+}
+.btn-container .cancel-btn:hover {
+  background-color: var(--bg-color-light);
+}
+
+/* --- Top Bar & Layout --- */
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 24px;
+}
+
+/* Adjust the top-bar for the edit page to align with the form container */
+.form-container + .top-bar,
+.top-bar:has(.form-container) {
+  max-width: 550px;
+  margin: 40px auto -20px auto;
+  padding: 0;
+  justify-content: flex-start;
+}
+
+/* --- Forms (Add/Edit) --- */
+.form-container {
+  max-width: 550px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-light);
+  background: #fff;
+}
+
+.form-container h1,
+.container h2 {
+  text-align: left;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: 600;
+  color: var(--text-color-dark);
+  margin-bottom: 2px;
+  font-size: 14px;
+}
+
+input:not([type="submit"]):not([type="button"]),
+textarea {
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--text-color-dark);
+  box-shadow: 0 0 0 1px var(--text-color-dark);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.btn-container,
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+.form-actions {
+  justify-content: flex-end;
+  gap: 15px;
+}
+.form-actions .back-btn {
+  color: var(--text-color-medium);
+  border: none;
+  padding: 0;
+}
+.form-actions .back-btn:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+/* --- Property Card/List Styles --- */
+.property-container {
+  padding: 40px 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px 24px;
+  margin: 0px 100px;
+}
+.property-card {
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.property-image {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.property-image img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+.property-card:hover .property-image img {
+  transform: scale(1.03);
+}
+
+.property-content {
+  padding: 0 5px;
+}
+.property-description {
+  font-size: 14px;
+  color: var(--text-color-medium);
+  margin-bottom: 4px;
+  height: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.property-details {
+  display: block;
+  font-size: 10px;
+  color: var(--text-color-medium);
+}
+.property-location {
+  color: var(--text-color-medium);
+  display: block;
+  margin-bottom: 2px;
+}
+.property-price {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-color-dark);
+}
+.property-price span {
+  font-weight: 800;
+}
+
+.property-footer {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px 5px 10px 0px;
+  gap: 0px;
+  border-top: none;
+}
+
+/* --- Listing Detail Page Specific Styles --- */
+
+/* Adjust the main container for the detail page to a standard reading width */
+.container:has(.property-header) {
+  max-width: 900px;
+  margin-top: 20px;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: visible;
+  padding: 0 24px;
+}
+
+.property-header {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.property-header img {
+  width: 60%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Styling the Back button positioned over the image */
+.property-header .back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  color: var(--text-color-dark);
+  font-size: 14px;
+  padding: 10px 15px;
+  border-radius: 50px; /* Pill shape */
+  box-shadow: var(--shadow-light);
+}
+
+.property-header .back-btn:hover {
+  background-color: white;
+}
+
+.property-content {
+  padding-top: 10px;
+}
+.property-title {
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 5px;
+  border-bottom: 1px solid var(--border-color); /* Added separator */
+  padding-bottom: 15px;
+}
+.property-location {
+  font-size: 16px;
+  color: var(--text-color-medium);
+  margin-bottom: 5px;
+}
+
+.property-description {
+  font-size: 16px;
+  color: var(--text-color-dark);
+  line-height: 1.6;
+  margin-bottom: 5px;
+}
+
+.property-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.property-price {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-color-dark);
+}
+.property-price span {
+  font-weight: 800;
+  color: var(--text-color-dark);
+}
+
+/* --- Media Queries --- */
+@media (max-width: 768px) {
+  .property-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px 16px;
+  }
+  .property-image img {
+    height: 200px;
+  }
+  .navbar .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar nav {
+    margin-top: 10px;
+  }
+  .site-footer .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .site-footer .social a {
+    margin-left: 0;
+    margin-right: 15px;
+  }
+  .form-container + .top-bar {
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+}
+/* --- Error Page Styles --- */
+.error-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  text-align: center;
+  padding: 20px;
+}
+
+.error-content h1 {
+  font-size: 72px;
+  font-weight: 900;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.error-content h2 {
+  font-size: 28px;
+  color: var(--text-color-dark);
+  margin-bottom: 15px;
+}
+
+.error-content p {
+  font-size: 16px;
+  color: var(--text-color-medium);
+  margin-bottom: 30px;
+}
+
+.error-content .back-btn {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: 700;
+  background-color: var(--primary-color);
+  color: #fff;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.error-content .back-btn:hover {
+  background-color: #e34c52;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+/* --- Add Review Button --- */
+.add-review-btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  background-color: #008489; /* Teal/Blue accent */
+  border: none;
+  transition: background 0.2s ease, transform 0.1s ease;
+  cursor: pointer;
+}
+
+.add-review-btn:hover {
+  background-color: #006666;
+  transform: translateY(-1px);
+}
+
+/* --- Review Page Rating Styling --- */
+/* --- Rating Section (Radio Buttons) --- */
+.review-page .rating {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between buttons */
+  margin-bottom: 20px;
+  position: relative; /* Fixes absolute positioning of radios */
+  flex-wrap: wrap; /* Wraps to next line if small screen */
+}
+
+.review-page .rating input[type="radio"] {
+  position: absolute;
+  opacity: 0; /* hide default radio */
+  width: 0;
+  height: 0;
+}
+
+.review-page .rating label {
+  font-weight: 600;
+  color: var(--text-color-dark);
+  cursor: pointer;
+  position: relative;
+  padding-left: 30px; /* space for custom circle */
+  font-size: 16px;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+/* Custom circle */
+.review-page .rating input[type="radio"] + label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: all 0.2s ease;
+}
+
+.review-page .rating input[type="radio"]:checked + label::before {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.review-page .rating label:hover::before {
+  border-color: var(--primary-color);
+}
+/* review section inside listing page */
+/* --- Review Section --- */
+.review-section {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: var(--bg-color-light);
+  border-radius: 12px;
+  box-shadow: var(--shadow-light);
+}
+
+.review-section h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text-color-dark);
+}
+
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 400px; /* Handles scrolling for many reviews */
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.review-card {
+  padding: 12px 15px;
+  border-radius: 8px;
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-light);
+}
+
+.review-rating {
+  color: #ffb400; /* Star color */
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.review-comment {
+  font-size: 14px;
+  color: var(--text-color-dark);
+}
+
+/* Add Review Button Styling */
+.review-section .add-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.review-section .add-btn:hover {
+  background-color: #e34c52;
+  transform: translateY(-1px);
+}
+/* Average Rating Section */
+.average-rating {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.average-rating .stars {
+  color: #ffb400; /* gold stars */
+  font-size: 1.1rem;
+}
+
+.review-section {
+  margin-top: 20px;
+}
+
+.review-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.review-rating {
+  color: #ffb400;
+  margin-bottom: 5px;
+}
+
+/* Small Image on Review Page */
+/* Large Landscape Image on Review Page */
+.review-page .review-image {
+  margin-top: 30px; /* space below image */
+}
+
+.review-page .review-image img {
+  width: 30%; /* max width of the image */
+  height: auto; /* auto height to keep aspect ratio */
+  object-fit: cover; /* ensures the image covers the container */
+  border-radius: 8px; /* rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* slight shadow for a lifted look */
+  display: block; /* removes any extra space under the image */
+  margin: 0 auto; /* centers the image horizontally */
+}
+
+/* --- Signup Page Styles --- */
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: #f7f7f7;
+  padding: 20px;
+}
+
+.signup-card {
+  background-color: #ffffff;
+  width: 400px;
+  max-width: 90%;
+  padding: 30px 35px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.signup-card h2 {
+  font-size: 1.8rem;
+  color: #ff385c; /* Airbnb pink */
+  margin-bottom: 8px;
+}
+
+.signup-card p {
+  color: #717171;
+  margin-bottom: 25px;
+}
+
+.signup-form .form-group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.signup-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.signup-form input:focus {
+  border-color: #ff385c;
+  box-shadow: 0 0 4px rgba(255, 56, 92, 0.3);
+}
+
+.signup-btn {
+  background-color: #ff385c;
+  color: #fff;
+  border: none;
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.signup-btn:hover {
+  background-color: #e03152;
+}
+
+.login-link {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.login-link a {
+  color: #ff385c;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* --- Login Page Styles --- */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: #f7f7f7;
+  padding: 20px;
+}
+
+.login-card {
+  background-color: #ffffff;
+  width: 400px;
+  max-width: 90%;
+  padding: 30px 35px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-card h2 {
+  font-size: 1.8rem;
+  color: #ff385c;
+  margin-bottom: 8px;
+}
+
+.login-card p {
+  color: #717171;
+  margin-bottom: 25px;
+}
+
+.login-form .form-group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.login-form input:focus {
+  border-color: #ff385c;
+  box-shadow: 0 0 4px rgba(255, 56, 92, 0.3);
+}
+
+.login-btn {
+  background-color: #ff385c;
+  color: #fff;
+  border: none;
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #e03152;
+}
+
+.signup-link {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.signup-link a {
+  color: #ff385c;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+
+/* delete btn in listing reviews */
+.review-card {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.review-card .delete-form {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  margin: 0;
+}
+
+.review-card .delete-btn {
+  background-color: #ff4d4f;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.review-card .delete-btn:hover {
+  background-color: #ff7875;
+}
